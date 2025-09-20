@@ -38,9 +38,31 @@ async function createNewUser(data: RegisterSchema) {
 }
 
 async function getAllUsers() {
-  const users = await prisma.user.findMany()
+  const users = await prisma.user.findMany({
+    select: {
+      id: true,
+      email: true,
+      name: true,
+      role: true,
+      createdAt: true,
+      updatedAt: true
+    },
+    orderBy: {
+      createdAt: 'desc'
+    }
+  })
 
   return users
+}
+
+async function getOneById(id: string) {
+  const user = await prisma.user.findUnique({
+    where: {
+      id
+    }
+  })
+
+  return user
 }
 
 async function getOneByEmail(email: string) {
@@ -60,5 +82,6 @@ export default {
   verifyToken,
   createNewUser,
   getAllUsers,
+  getOneById,
   getOneByEmail
 }

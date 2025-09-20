@@ -98,9 +98,32 @@ async function getUsers(_req: Request, res: Response, next: NextFunction) {
   }
 }
 
+async function validateToken(req: ExpressRequest, res: Response, next: NextFunction) {
+  try {
+    const user = await userService.getOneById(req.user!.id)
+
+    if (!user) {
+      throw new HttpError(401, 'Invalid or expired token')
+    }
+
+    const { password: _, ...userWithoutPassword } = user
+
+    res.status(200).json(
+      new JsonResponse({
+        status: 'success',
+        message: 'User validated successfully',
+        data: userWithoutPassword
+      })
+    )
+  } catch (err) {
+    next(err)
+  }
+}
+
 export default {
   register,
   login,
   logout,
-  getUsers
+  getUsers,
+  validateToken
 }

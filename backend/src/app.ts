@@ -4,6 +4,7 @@ import cors from 'cors'
 
 import userRouter from './routes/user.route'
 
+import errorHandler from './middlewares/error-handler'
 import unknownEndpoint from './middlewares/unknown-endpoint'
 
 const app = express()
@@ -24,6 +25,7 @@ app.get('/health', (_req: Request, res: Response) => {
 
 app.use('/api/users', userRouter)
 
+app.use(errorHandler)
 app.use(unknownEndpoint)
 
 export default app

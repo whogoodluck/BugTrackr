@@ -7,10 +7,14 @@ const userRouter = Router()
 userRouter.post('/register', userController.register)
 userRouter.post('/login', userController.login)
 
-userRouter.use(authMiddleware.authenticateToken)
-userRouter.post('/logout', userController.logout)
+userRouter.get('/me', authMiddleware.authenticateToken, userController.validateToken)
+userRouter.post('/logout', authMiddleware.authenticateToken, userController.logout)
 
-userRouter.use(authMiddleware.requireAdmin)
-userRouter.get('/', userController.getUsers)
+userRouter.get(
+  '/',
+  authMiddleware.authenticateToken,
+  authMiddleware.requireAdmin,
+  userController.getUsers
+)
 
 export default userRouter
