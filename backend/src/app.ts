@@ -2,6 +2,8 @@ import express, { Request, Response } from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
 
+import userRouter from './routes/user.route'
+
 import unknownEndpoint from './middlewares/unknown-endpoint'
 
 const app = express()
@@ -19,6 +21,8 @@ app.get('/', (_req: Request, res: Response) => {
 app.get('/health', (_req: Request, res: Response) => {
   res.send('OK')
 })
+
+app.use('/api/users', userRouter)
 
 app.use(unknownEndpoint)
 
