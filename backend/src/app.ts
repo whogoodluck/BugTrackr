@@ -3,6 +3,7 @@ import morgan from 'morgan'
 import cors from 'cors'
 
 import userRouter from './routes/user.route'
+import bugRouter from './routes/bug.route'
 
 import errorHandler from './middlewares/error-handler'
 import unknownEndpoint from './middlewares/unknown-endpoint'
@@ -24,6 +25,7 @@ app.get('/health', (_req: Request, res: Response) => {
 })
 
 app.use('/api/users', userRouter)
+app.use('/api/bugs', bugRouter)
 
 app.use(errorHandler)
 app.use(unknownEndpoint)
