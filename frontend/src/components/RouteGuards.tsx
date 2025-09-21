@@ -3,9 +3,13 @@ import { useAuthContext } from '../contexts/AuthContext'
 import Loading from './Loading'
 
 export const PublicRoute = ({ children }: { children: React.ReactNode }) => {
-  const { isAuthenticated, loading } = useAuthContext()
+  const { isAuthenticated, isAdmin, loading } = useAuthContext()
 
   if (loading) return <Loading />
+
+  if (isAdmin) {
+    return <Navigate to='/admin' replace />
+  }
 
   if (isAuthenticated) {
     return <Navigate to='/' replace />

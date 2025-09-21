@@ -97,21 +97,15 @@ function SignIn() {
                             className='pr-10 pl-10'
                             disabled={isPending}
                           />
-                          <Button
+                          <button
                             type='button'
-                            variant='ghost'
-                            size='icon'
-                            className='absolute top-0 right-0 h-full px-3 hover:bg-transparent'
+                            className='text-muted-foreground absolute top-0 right-0 h-full cursor-pointer px-3'
                             onClick={() => setShowPassword(!showPassword)}
                             disabled={isPending}
                             tabIndex={-1}
                           >
-                            {showPassword ? (
-                              <EyeOff className='text-muted-foreground h-4 w-4' />
-                            ) : (
-                              <Eye className='text-muted-foreground h-4 w-4' />
-                            )}
-                          </Button>
+                            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                          </button>
                         </div>
                       </FormControl>
                       <FormMessage />

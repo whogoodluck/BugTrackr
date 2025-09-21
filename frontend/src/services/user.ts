@@ -1,20 +1,16 @@
 import axios from 'axios'
+import { getToken } from '../lib/utils'
+import type { SignInFormData, SignUpFormData } from '../schemas/user.schema'
 
 const baseUrl = '/api/users'
 
-export const getToken = () => {
-  const token = localStorage.getItem('token')
-
-  return token
-}
-
-export const register = async (user: { email: string; name: string; password: string }) => {
+export const register = async (user: SignUpFormData) => {
   const res = await axios.post(`${baseUrl}/register`, user)
 
   return res.data
 }
 
-export const login = async (credentials: { email: string; password: string }) => {
+export const login = async (credentials: SignInFormData) => {
   const res = await axios.post(`${baseUrl}/login`, credentials)
 
   return res.data

@@ -19,6 +19,7 @@ interface GetAllBugsParams {
 }
 
 async function getAllBugs({ severity, status }: GetAllBugsParams) {
+  console.log('severity', severity, 'status', status)
   const whereClause: any = {}
 
   if (severity) whereClause.severity = severity
@@ -26,6 +27,9 @@ async function getAllBugs({ severity, status }: GetAllBugsParams) {
 
   const bugs = await prisma.bug.findMany({
     where: whereClause,
+    include: {
+      reporter: true
+    },
     orderBy: {
       createdAt: 'desc'
     }
@@ -39,6 +43,9 @@ async function getBugsByReporter(reporterId: string) {
     where: {
       reporterId
     },
+    include: {
+      reporter: true
+    },
     orderBy: {
       createdAt: 'desc'
     }
@@ -51,6 +58,9 @@ async function getBugById(id: string) {
   const bug = await prisma.bug.findUnique({
     where: {
       id
+    },
+    include: {
+      reporter: true
     }
   })
 

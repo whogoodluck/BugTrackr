@@ -8,14 +8,10 @@ import {
   type ReactNode,
   type SetStateAction,
 } from 'react'
+import { removeToken } from '../lib/utils'
+import { Role } from '../schemas/user.schema'
 import { validateToken } from '../services/user'
-
-interface User {
-  id: string
-  name: string
-  email: string
-  role: 'user' | 'admin'
-}
+import type { User } from '../types/user.type'
 
 interface AuthContextType {
   user: User | null
@@ -39,10 +35,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const checkAuthStatus = async () => {
     try {
-      const userData = await validateToken()
-      setUser(userData)
+      const res = await validateToken()
+      setUser(res.data)
     } catch {
-      localStorage.removeItem('token')
+      removeToken()
       setUser(null)
     } finally {
       setLoading(false)
@@ -50,7 +46,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }
 
   const clearAuth = () => {
-    localStorage.removeItem('token')
+    removeToken()
     setUser(null)
     queryClient.clear()
   }
@@ -63,7 +59,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         setUser,
         clearAuth,
         isAuthenticated: !!user,
-        isAdmin: user?.role === 'admin',
+        isAdmin: user?.role === Role.ADMIN,
       }}
     >
       {children}

@@ -2,6 +2,7 @@ import { useMutation } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 import { useAuthContext } from '../contexts/AuthContext'
+import { setToken } from '../lib/utils'
 import { login, logout, register } from '../services/user'
 
 export function useLogin() {
@@ -11,9 +12,10 @@ export function useLogin() {
   return useMutation({
     mutationFn: login,
     onSuccess: data => {
-      localStorage.setItem('token', data.data.token)
+      setToken(data.data.token)
       setUser(data.data.user)
-      navigate('/home')
+      navigate('/')
+
       toast.success('Login successful!')
     },
     onError: (error: any) => {
@@ -29,7 +31,7 @@ export function useRegister() {
   return useMutation({
     mutationFn: register,
     onSuccess: data => {
-      localStorage.setItem('token', data.data.token)
+      setToken(data.data.token)
       setUser(data.data.user)
       navigate('/home')
       toast.success('Registration successful!')

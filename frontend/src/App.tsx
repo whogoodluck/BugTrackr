@@ -1,6 +1,8 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import { ProtectedRoute, PublicRoute } from './components/RouteGuards'
+import { AdminRoute, ProtectedRoute, PublicRoute } from './components/RouteGuards'
+import WithHeaderFooterLayout from './components/WithHeaderFooterLayout'
 import { AuthProvider } from './contexts/AuthContext'
+import AdminDashboard from './pages/AdminDashboard'
 import Home from './pages/Home'
 import Register from './pages/Register'
 import SignIn from './pages/SignIn'
@@ -14,7 +16,9 @@ function App() {
             path='/'
             element={
               <ProtectedRoute>
-                <Home />
+                <WithHeaderFooterLayout>
+                  <Home />
+                </WithHeaderFooterLayout>
               </ProtectedRoute>
             }
           />
@@ -32,6 +36,16 @@ function App() {
               <PublicRoute>
                 <Register />
               </PublicRoute>
+            }
+          />
+          <Route
+            path='/admin'
+            element={
+              <AdminRoute>
+                <WithHeaderFooterLayout>
+                  <AdminDashboard />
+                </WithHeaderFooterLayout>
+              </AdminRoute>
             }
           />
         </Routes>
