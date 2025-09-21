@@ -33,6 +33,8 @@ export const validateToken = async () => {
     },
   })
 
+  console.log('ok', res)
+
   if (res.statusText !== 'OK') {
     throw new Error('Invalid token')
   }
