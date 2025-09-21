@@ -57,7 +57,7 @@ function Header() {
                 <h3 className='text-xl font-semibold'>{user?.name}</h3>
                 <p className='text-muted-foreground text-sm font-medium'>{user?.email}</p>
               </div>
-              <div className='flex items-center justify-between gap-2'>
+              <div className='flex items-center justify-between gap-2 px-2'>
                 <ModeToggle />
                 <Button
                   size='lg'
@@ -66,10 +66,7 @@ function Header() {
                   onClick={handleLogout}
                 >
                   {isPending ? (
-                    <>
-                      {' '}
-                      <Loader2 className='h-4 w-4 animate-spin' /> Logging out{' '}
-                    </>
+                    <Loader2 className='h-4 w-4 animate-spin' />
                   ) : (
                     <>
                       <LogOutIcon className='h-4 w-4' /> Logout
