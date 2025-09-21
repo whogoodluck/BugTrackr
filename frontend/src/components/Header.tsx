@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useAuthContext } from '../contexts/AuthContext'
 import { useLogout } from '../hooks/useAuth'
 import { cn } from '../lib/utils'
+import { ModeToggle } from './mode-toggle'
 import { Button } from './ui/button'
 import { Menubar, MenubarContent, MenubarMenu, MenubarTrigger } from './ui/menubar'
 
@@ -56,23 +57,26 @@ function Header() {
                 <h3 className='text-xl font-semibold'>{user?.name}</h3>
                 <p className='text-muted-foreground text-sm font-medium'>{user?.email}</p>
               </div>
-              <Button
-                size='lg'
-                variant='secondary'
-                className='text-destructive w-full'
-                onClick={handleLogout}
-              >
-                {isPending ? (
-                  <>
-                    {' '}
-                    <Loader2 className='h-4 w-4 animate-spin' /> Logging out{' '}
-                  </>
-                ) : (
-                  <>
-                    <LogOutIcon className='h-4 w-4' /> Logout
-                  </>
-                )}
-              </Button>
+              <div className='flex items-center justify-between gap-2'>
+                <ModeToggle />
+                <Button
+                  size='lg'
+                  variant='secondary'
+                  className='text-destructive flex-1'
+                  onClick={handleLogout}
+                >
+                  {isPending ? (
+                    <>
+                      {' '}
+                      <Loader2 className='h-4 w-4 animate-spin' /> Logging out{' '}
+                    </>
+                  ) : (
+                    <>
+                      <LogOutIcon className='h-4 w-4' /> Logout
+                    </>
+                  )}
+                </Button>
+              </div>
             </MenubarContent>
           </MenubarMenu>
         </Menubar>

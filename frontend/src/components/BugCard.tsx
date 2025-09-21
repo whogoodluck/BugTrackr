@@ -47,9 +47,8 @@ export default function BugCard({ bug }: { bug: Bug }) {
           </div>
         </div>
 
-        {/* reporter */}
         <div className=''>
-          <Badge variant='secondary' className='text-primary bg-primary-foreground px-2 py-1'>
+          <Badge variant='secondary' className='px-2 py-1'>
             {bug.reporter.name}
           </Badge>
         </div>
