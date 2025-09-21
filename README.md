@@ -82,7 +82,7 @@ Relationships:
 - `description`: Detailed bug description (TEXT)
 - `severity`: Bug severity - 'Low', 'Medium', 'High' (ENUM)
 - `status`: Bug status - 'Open', 'In Progress', 'Closed' (ENUM, DEFAULT: 'Open')
-- `user_id`: Foreign key referencing users.id
+- `reporterId`: Foreign key referencing users.id
 - `created_at`: Timestamp
 - `updated_at`: Timestamp
 
