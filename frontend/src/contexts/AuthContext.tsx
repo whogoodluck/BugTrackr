@@ -36,11 +36,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const checkAuthStatus = async () => {
     try {
       const res = await validateToken()
-      console.log('checkAuthStatus', res.data)
       setUser(res.data)
     } catch {
-      // removeToken()
-      console.log('removing token')
+      removeToken()
       setUser(null)
     } finally {
       setLoading(false)
