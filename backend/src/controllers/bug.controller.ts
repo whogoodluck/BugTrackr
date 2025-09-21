@@ -8,13 +8,12 @@ import { createBugSchema, updateBugSchema } from '../schemas/bug.schema'
 
 async function createBug(req: ExpressRequest, res: Response, next: NextFunction) {
   try {
-    const { title, description, severity, status } = createBugSchema.parse(req.body)
+    const { title, description, severity } = createBugSchema.parse(req.body)
 
     const bug = await bugService.createBug(req.user!.id, {
       title,
       description,
-      severity,
-      status
+      severity
     })
 
     res.status(201).json(
