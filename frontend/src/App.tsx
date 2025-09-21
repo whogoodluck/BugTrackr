@@ -3,6 +3,7 @@ import { AdminRoute, ProtectedRoute, PublicRoute } from './components/RouteGuard
 import WithHeaderFooterLayout from './components/WithHeaderFooterLayout'
 import { AuthProvider } from './contexts/AuthContext'
 import AdminDashboard from './pages/AdminDashboard'
+import CreateBug from './pages/CreateBug'
 import Home from './pages/Home'
 import Register from './pages/Register'
 import SignIn from './pages/SignIn'
@@ -18,6 +19,16 @@ function App() {
               <ProtectedRoute>
                 <WithHeaderFooterLayout>
                   <Home />
+                </WithHeaderFooterLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/create-bug'
+            element={
+              <ProtectedRoute>
+                <WithHeaderFooterLayout>
+                  <CreateBug />
                 </WithHeaderFooterLayout>
               </ProtectedRoute>
             }

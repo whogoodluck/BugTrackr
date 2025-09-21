@@ -1,9 +1,10 @@
-import { Loader2, LogOutIcon } from 'lucide-react'
+import { Loader2, LogOutIcon, User } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 import { useAuthContext } from '../contexts/AuthContext'
 import { useLogout } from '../hooks/useAuth'
 import { cn } from '../lib/utils'
 import { Button } from './ui/button'
+import { Menubar, MenubarContent, MenubarMenu, MenubarTrigger } from './ui/menubar'
 
 function Header() {
   const { mutate, isPending } = useLogout()
@@ -20,7 +21,7 @@ function Header() {
   const { user } = useAuthContext()
 
   return (
-    <div className='border-foreground/30 bg-background fixed top-0 z-50 flex h-24 w-full items-center justify-between px-6 md:px-16'>
+    <div className='border-foreground/30 bg-background fixed top-0 z-50 flex h-24 w-full items-center justify-between border-b px-6 md:px-16'>
       <Link to='/' className='text-primary text-3xl font-semibold'>
         BugTrackr
       </Link>
@@ -39,13 +40,42 @@ function Header() {
             </Link>
           ))}
         </div>
-        <Button size='lg' variant='secondary' className='text-destructive' onClick={handleLogout}>
-          {isPending ? (
-            <Loader2 className='h-4 w-4 animate-spin' />
-          ) : (
-            <LogOutIcon className='h-4 w-4' />
-          )}
-        </Button>
+
+        <Menubar className='border-none shadow-none'>
+          <MenubarMenu>
+            <MenubarTrigger className='rounded-full p-2'>
+              <User
+                size={20}
+                className='text-primary cursor-pointer'
+                strokeWidth={3}
+                fill='currentColor'
+              />
+            </MenubarTrigger>
+            <MenubarContent className='mr-1'>
+              <div className='mb-2 flex flex-col gap-1 rounded-lg p-2'>
+                <h3 className='text-xl font-semibold'>{user?.name}</h3>
+                <p className='text-muted-foreground text-sm font-medium'>{user?.email}</p>
+              </div>
+              <Button
+                size='lg'
+                variant='secondary'
+                className='text-destructive w-full'
+                onClick={handleLogout}
+              >
+                {isPending ? (
+                  <>
+                    {' '}
+                    <Loader2 className='h-4 w-4 animate-spin' /> Logging out{' '}
+                  </>
+                ) : (
+                  <>
+                    <LogOutIcon className='h-4 w-4' /> Logout
+                  </>
+                )}
+              </Button>
+            </MenubarContent>
+          </MenubarMenu>
+        </Menubar>
       </div>
     </div>
   )
