@@ -6,7 +6,7 @@ A full-stack web application for reporting, tracking, and managing software bugs
 
 You can view the live version of the application at:
 
-[See Live](https://)
+[See Live](https://bugtrackr-eq97.onrender.com)
 
 ## 📋 Features
 
@@ -188,7 +188,8 @@ The application will be available at:
 
 ## 🎨 Screenshots
 
-![BugTrackr Interface](./public/BugTrackr.png)
+![BugTrackr SignIn page Interface](./public/BugTrackr-signin.png)
+![BugTrackr Admin page Interface](./public/BugTrackr-admin.png)
 
 ### Bug Reporting Form
 
