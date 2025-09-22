@@ -19,7 +19,6 @@ interface GetAllBugsParams {
 }
 
 async function getAllBugs({ severity, status }: GetAllBugsParams) {
-  console.log('severity', severity, 'status', status)
   const whereClause: any = {}
 
   if (severity) whereClause.severity = severity

@@ -23,8 +23,8 @@ function Header() {
 
   return (
     <div className='border-foreground/30 bg-background fixed top-0 z-50 flex h-24 w-full items-center justify-between border-b px-6 md:px-16'>
-      <Link to='/' className='text-primary text-3xl font-semibold'>
-        BugTrackr
+      <Link to='/' className='text-primary text-2xl font-semibold'>
+        Bug<span className='text-secondary'>Trackr</span>
       </Link>
       <div className='flex items-center gap-4 md:gap-8'>
         <div className='flex items-center gap-2 md:gap-6'>
@@ -61,7 +61,7 @@ function Header() {
                 <ModeToggle />
                 <Button
                   size='lg'
-                  variant='secondary'
+                  variant='outline'
                   className='text-destructive flex-1'
                   onClick={handleLogout}
                 >

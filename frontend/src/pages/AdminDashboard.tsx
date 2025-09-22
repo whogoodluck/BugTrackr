@@ -63,7 +63,7 @@ const AdminDashboard = () => {
 
   return (
     <div className='mt-24'>
-      <div className='bg-muted space-y-4 px-4 py-6 md:px-16'>
+      <div className='bg- space-y-4 px-4 py-6 md:px-16'>
         <div className='flex flex-col gap-4 md:flex-row md:items-center md:justify-between'>
           <div>
             <h1 className='text-3xl font-bold tracking-tight'>Bug Dashboard</h1>
@@ -75,7 +75,7 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        <Card className='shadow-none'>
+        <Card className='bg-background shadow-none'>
           <CardHeader>
             <CardTitle className='flex items-center gap-2'>
               <Filter className='h-5 w-5' />

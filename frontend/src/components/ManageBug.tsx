@@ -52,7 +52,7 @@ function ManageBug({ bug }: { bug: Bug }) {
           <span className='sr-only'>Toggle task menu</span>
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className='p-2'>
+      <DropdownMenuContent className='mr-2 space-y-2 p-3'>
         <AlertDialog>
           <AlertDialogTrigger className='flex cursor-pointer items-center gap-2'>
             {isDeleting ? (

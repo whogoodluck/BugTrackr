@@ -153,7 +153,7 @@ function Register() {
             <div className='mt-6'>
               <p className='bg-card text-muted-foreground px-2 text-center text-sm'>
                 Already have an account?{' '}
-                <Link to='/signin' className='text-primary font-semibold'>
+                <Link to='/signin' className='text-secondary font-semibold'>
                   Sign in
                 </Link>
               </p>

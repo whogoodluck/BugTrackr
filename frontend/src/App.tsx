@@ -5,6 +5,7 @@ import { AuthProvider } from './contexts/AuthContext'
 import AdminDashboard from './pages/AdminDashboard'
 import CreateBug from './pages/CreateBug'
 import Home from './pages/Home'
+import NotFound from './pages/NoFound'
 import Register from './pages/Register'
 import SignIn from './pages/SignIn'
 
@@ -59,6 +60,7 @@ function App() {
               </AdminRoute>
             }
           />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </AuthProvider>
     </Router>
