@@ -91,7 +91,7 @@ function ManageBug({ bug }: { bug: Bug }) {
               <EditIcon size={16} /> Edit
             </DialogTrigger>
             <DialogContent>
-              <DialogTitle className='text-center'>Update Issue</DialogTitle>
+              <DialogTitle className='text-center'>Update Bug</DialogTitle>
               <BugForm formType='update' bug={bug} />
             </DialogContent>
           </Dialog>
