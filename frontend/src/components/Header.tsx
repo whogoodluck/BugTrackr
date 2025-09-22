@@ -22,7 +22,7 @@ function Header() {
   const { user } = useAuthContext()
 
   return (
-    <div className='border-foreground/30 bg-background fixed top-0 z-50 flex h-24 w-full items-center justify-between border-b px-6 md:px-16'>
+    <header className='border-foreground/30 fixed top-0 z-50 flex h-24 w-full items-center justify-between border-b px-6 md:px-16'>
       <Link to='/' className='text-primary text-2xl font-semibold'>
         Bug<span className='text-secondary'>Trackr</span>
       </Link>
@@ -78,7 +78,7 @@ function Header() {
           </MenubarMenu>
         </Menubar>
       </div>
-    </div>
+    </header>
   )
 }
 
