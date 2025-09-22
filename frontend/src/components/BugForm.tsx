@@ -77,13 +77,13 @@ function BugForm({ formType = 'create', bug }: BugFormProps) {
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger className='w-full cursor-pointer'>
-                    <SelectValue placeholder='Select priority' />
+                    <SelectValue placeholder='Select severity' />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  {Object.values(Severity).map(priority => (
-                    <SelectItem className='cursor-pointer' key={priority} value={priority}>
-                      {priority}
+                  {Object.values(Severity).map(severity => (
+                    <SelectItem className='cursor-pointer' key={severity} value={severity}>
+                      {severity}
                     </SelectItem>
                   ))}
                 </SelectContent>
